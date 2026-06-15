@@ -73,7 +73,6 @@ const MAIN_PROJECTS: Project[] = [
     stats: [
       { label: "Pages", value: "27" },
       { label: "Feature", value: "실시간 GPS" },
-      { label: "Feature", value: "IoT 연동" },
     ],
     tags: [
       "React",
@@ -112,7 +111,6 @@ const MAIN_PROJECTS: Project[] = [
     stats: [
       { label: "Pages", value: "55" },
       { label: "Features", value: "차량 등록·판매" },
-      { label: "Features", value: "광고 배너" },
     ],
     tags: [
       "React",
