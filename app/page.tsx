@@ -32,6 +32,15 @@ const TECH_INFRA = [
   "Docker",
   "Vercel",
 ];
+const TECH_SIDE = ["Supabase", "Redis", "Flutter", "Dart"];
+const TECH_EXPERIENCE = [
+  "Playwright",
+  "Storybook",
+  "Redux",
+  "Redux-Toolkit",
+  "Redux-Saga",
+  "Styled-components",
+];
 
 interface Achievement {
   description: ReactNode;
@@ -93,6 +102,7 @@ const CAREER = [
     company: "코코넛사일로",
     description:
       "라오스 O2O 플랫폼 KOKKOK. React 어드민 10개, Next.js 랜딩 페이지 3개 설계·개발·운영. 2021년부터 2~6인 FE 팀 리드.",
+    migrations: ["TypeScript", "TanStack Query", "Vite", "pnpm", "Turborepo", "MSW"],
     period: "2020.12 ~ 현재",
     role: "Frontend Engineer / FE Team Lead",
   },
@@ -220,6 +230,32 @@ const ResumePage = () => {
               ))}
             </div>
           </div>
+          <div className="space-y-1.5">
+            <p className="text-xs text-[var(--muted)]">사이드 프로젝트</p>
+            <div className="flex flex-wrap gap-1.5">
+              {TECH_SIDE.map((t) => (
+                <span
+                  key={t}
+                  className="text-xs font-mono text-[var(--muted)] border border-[var(--border)] px-2.5 py-1 rounded-full"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-1.5">
+            <p className="text-xs text-[var(--muted)]">Experience</p>
+            <div className="flex flex-wrap gap-1.5">
+              {TECH_EXPERIENCE.map((t) => (
+                <span
+                  key={t}
+                  className="text-xs font-mono text-[var(--muted)] border border-[var(--border)] px-2.5 py-1 rounded-full opacity-60"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -257,8 +293,8 @@ const ResumePage = () => {
         <h2 className="text-xs font-mono text-[var(--muted)] uppercase tracking-widest">
           Career
         </h2>
-        {CAREER.map(({ company, description, period, role }) => (
-          <div key={company} className="space-y-2">
+        {CAREER.map(({ company, description, migrations, period, role }) => (
+          <div key={company} className="space-y-3">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-base font-semibold text-[var(--foreground)]">
@@ -273,6 +309,17 @@ const ResumePage = () => {
             <p className="text-sm text-[var(--muted)] leading-relaxed">
               {description}
             </p>
+            <div className="flex flex-wrap items-center gap-1.5 pt-1">
+              <span className="text-xs text-[var(--muted)] mr-1">기술 전환</span>
+              {migrations.map((t) => (
+                <span
+                  key={t}
+                  className="text-xs font-mono text-[var(--accent)] border border-[var(--accent)] border-opacity-30 px-2 py-0.5 rounded-full"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
         ))}
       </section>
