@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import PrintButton from "@/components/PrintButton";
+
 interface StatCard {
   href: string;
   label: string;
@@ -65,6 +67,10 @@ const Hero = () => {
                   @ Coconutsilo
                 </span>
               </p>
+            </div>
+
+            <div className="pt-2">
+              <PrintButton label="PDF로 저장" />
             </div>
           </div>
 
