@@ -1,7 +1,11 @@
-import type { ReactNode } from "react";
+import type { Metadata, ReactNode } from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: { absolute: "김재경 | Frontend Engineer - 이력서" },
+};
 
 import Footer from "@/components/Footer";
 import PrintButton from "@/components/PrintButton";
