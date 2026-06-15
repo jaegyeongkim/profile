@@ -1,9 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
-
-interface ProjectTag {
-  label: string;
-}
-
 interface ProjectStat {
   label: string;
   value: string;
@@ -25,11 +19,6 @@ interface Project {
   title: string;
 }
 
-interface ProjectGroup {
-  items: Project[];
-  label: string;
-}
-
 const MAIN_PROJECTS: Project[] = [
   {
     description:
@@ -38,7 +27,7 @@ const MAIN_PROJECTS: Project[] = [
     links: [
       {
         href: "https://laosmartmobility.com/service/kokkok",
-        label: "서비스 소개",
+        label: "서비스소개",
       },
     ],
     role: "초기 아키텍처 설계, 공용 컴포넌트 설계, API 연동, 권한 시스템 설계, 운영 전반",
@@ -69,7 +58,7 @@ const MAIN_PROJECTS: Project[] = [
     links: [
       {
         href: "https://laosmartmobility.com/service/move",
-        label: "서비스 소개",
+        label: "서비스소개",
       },
       {
         href: "https://play.google.com/store/apps/details?id=com.coconutsilo.kokkokexpress.shipper",
@@ -108,7 +97,7 @@ const MAIN_PROJECTS: Project[] = [
     links: [
       {
         href: "https://laosmartmobility.com/service/car",
-        label: "서비스 소개",
+        label: "서비스소개",
       },
       {
         href: "https://play.google.com/store/apps/details?id=com.laosmartmobility.car",
@@ -148,6 +137,12 @@ const OTHER_ADMINS = [
   { description: "IoT 기기 관리 어드민", title: "KOKKOK Move IoT" },
   { description: "출석체크·룰렛 등 이벤트 페이지", title: "KOKKOK Event" },
   { description: "스토어 관리 어드민", title: "KOKKOK Store" },
+];
+
+const LANDING_PAGES = [
+  { href: "https://laosmartmobility.com", label: "laosmartmobility.com" },
+  { href: "https://coconutsilo.com", label: "coconutsilo.com" },
+  { href: "https://data.coconutsilo.com", label: "data.coconutsilo.com" },
 ];
 
 const SIDE_PROJECTS: Project[] = [
@@ -197,7 +192,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
   return (
     <div className="bg-[var(--background)] p-8 md:p-10 space-y-6">
       <div className="space-y-2">
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2">
           <h3 className="text-lg font-semibold text-[var(--foreground)]">
             {title}
           </h3>
@@ -209,13 +204,26 @@ const ProjectCard = ({ project }: { project: Project }) => {
           {links?.map(({ href, label }) => (
             <a
               key={label}
-              className="flex items-center gap-1 text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+              className="flex items-center gap-1 text-xs font-mono text-[var(--foreground)] border border-[var(--border)] px-2 py-0.5 rounded hover:bg-[var(--foreground)] hover:text-[var(--background)] transition-colors duration-150"
               href={href}
               rel="noopener noreferrer"
               target="_blank"
             >
-              {label}
-              <ArrowUpRight size={12} />
+              {label}{" "}
+              <svg
+                fill="none"
+                height="10"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                width="10"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" x2="21" y1="14" y2="3" />
+              </svg>
             </a>
           ))}
         </div>
@@ -241,7 +249,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         {tags.map((tag) => (
           <span
             key={tag}
-            className="text-xs font-mono text-[var(--muted)] bg-[#f5f5f5] px-2 py-0.5 rounded"
+            className="text-xs font-mono text-[var(--muted)] bg-[var(--surface)] px-2 py-0.5 rounded"
           >
             {tag}
           </span>
@@ -253,7 +261,10 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
 const Projects = () => {
   return (
-    <section className="px-6 md:px-12 lg:px-24 py-24 border-t border-[var(--border)]">
+    <section
+      className="px-6 md:px-12 lg:px-24 py-24 border-t border-[var(--border)]"
+      id="projects"
+    >
       <div className="max-w-6xl mx-auto w-full space-y-20">
         <div className="space-y-12">
           <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-12 lg:gap-24">
@@ -295,11 +306,37 @@ const Projects = () => {
               ))}
             </div>
             <div className="mt-6 py-4 border-t border-[var(--border)]">
-              <p className="text-sm font-medium text-[var(--foreground)] mb-1">
+              <p className="text-sm font-medium text-[var(--foreground)] mb-3">
                 랜딩 페이지 3종
               </p>
+              <div className="flex flex-wrap gap-2 mb-2">
+                {LANDING_PAGES.map(({ href, label }) => (
+                  <a
+                    key={label}
+                    className="flex items-center gap-1 text-xs font-mono text-[var(--accent)] hover:underline"
+                    href={href}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {label}
+                    <svg
+                      fill="none"
+                      height="10"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      width="10"
+                    >
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" x2="21" y1="14" y2="3" />
+                    </svg>
+                  </a>
+                ))}
+              </div>
               <p className="text-xs text-[var(--muted)]">
-                laosmartmobility.com / coconutsilo.com / data.coconutsilo.com —
                 KOKKOK 서비스 소개, 코코넛사일로 회사 소개, 데이터 바우처 신청.
                 웹·모바일 적응형 UI, 다국어.
               </p>
@@ -308,7 +345,7 @@ const Projects = () => {
                   (tag) => (
                     <span
                       key={tag}
-                      className="text-xs font-mono text-[var(--muted)] bg-[#f5f5f5] px-2 py-0.5 rounded"
+                      className="text-xs font-mono text-[var(--muted)] bg-[var(--surface)] px-2 py-0.5 rounded"
                     >
                       {tag}
                     </span>

@@ -203,7 +203,7 @@ const ResumePage = () => {
         </div>
         <Link
           className="inline-flex items-center gap-1 text-sm text-[var(--accent)] hover:underline"
-          href="/portfolio"
+          href="/portfolio#achievements"
         >
           상세 내용 보기 →
         </Link>

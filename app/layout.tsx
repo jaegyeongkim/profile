@@ -89,8 +89,14 @@ const RootLayout = ({
     <html
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       lang="ko"
+      suppressHydrationWarning
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');if(t==='dark'||(t===null&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}})()`,
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
           type="application/ld+json"

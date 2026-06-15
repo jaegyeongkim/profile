@@ -1,16 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface StatCard {
+  href: string;
   label: string;
   suffix: string;
   value: string;
 }
 
 const STATS: StatCard[] = [
-  { label: "Admin Services", suffix: "+", value: "10" },
-  { label: "Shared Components", suffix: "+", value: "206" },
-  { label: "Tests", suffix: "+", value: "165" },
-  { label: "Bundle Reduction", suffix: "%", value: "92" },
+  { href: "/portfolio#projects", label: "Admin Services", suffix: "+", value: "10" },
+  { href: "/portfolio#achievements", label: "Shared Components", suffix: "+", value: "206" },
+  { href: "/portfolio#achievements", label: "Tests", suffix: "+", value: "165" },
+  { href: "/portfolio#achievements", label: "Bundle Reduction", suffix: "%", value: "92" },
 ];
 
 const Hero = () => {
@@ -67,10 +69,11 @@ const Hero = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            {STATS.map(({ label, suffix, value }) => (
-              <div
+            {STATS.map(({ href, label, suffix, value }) => (
+              <Link
                 key={label}
-                className="border border-[var(--border)] p-6 space-y-2 hover:border-[var(--foreground)] transition-colors duration-200"
+                className="border border-[var(--border)] p-6 space-y-2 hover:border-[var(--foreground)] transition-colors duration-200 group block"
+                href={href}
               >
                 <div className="flex items-baseline gap-0.5">
                   <span className="text-4xl font-bold text-[var(--foreground)] tracking-tight">
@@ -80,8 +83,10 @@ const Hero = () => {
                     {suffix}
                   </span>
                 </div>
-                <p className="text-sm text-[var(--muted)]">{label}</p>
-              </div>
+                <p className="text-sm text-[var(--muted)] group-hover:text-[var(--foreground)] transition-colors duration-200">
+                  {label}
+                </p>
+              </Link>
             ))}
           </div>
         </div>
