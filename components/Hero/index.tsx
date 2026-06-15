@@ -27,14 +27,17 @@ const Hero = () => {
               <Image
                 alt="김재경 프로필"
                 className="object-cover"
-                height={96}
+                height={160}
                 src="/avatar.webp"
-                width={96}
+                width={160}
               />
               <div className="h-px flex-1 bg-[var(--border)]" />
             </div>
 
             <div className="space-y-3">
+              <p className="text-xs text-[var(--muted)] tracking-widest uppercase font-mono">
+                문제를 끝까지 파고들어 개선하는 개발자
+              </p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--foreground)] leading-none">
                 김재경
               </h1>
