@@ -63,7 +63,7 @@ const TableOfContents = ({ sections }: { sections: TocSection[] }) => {
   };
 
   return (
-    <nav className="hidden xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-1">
+    <nav className="flex fixed right-3 xl:right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-1">
       {sections.map((section) => {
         const isActive = active === section.id;
         return (
@@ -72,8 +72,9 @@ const TableOfContents = ({ sections }: { sections: TocSection[] }) => {
               className="flex items-center gap-2.5 group w-full cursor-pointer"
               onClick={() => scrollTo(section.id)}
             >
+              {/* 레이블: xl 이상에서만 표시 */}
               <span
-                className={`text-xs font-mono tracking-wide transition-all duration-200 text-right ml-auto ${
+                className={`hidden xl:inline text-xs font-mono tracking-wide transition-all duration-200 text-right ml-auto ${
                   isActive
                     ? "text-[var(--foreground)] opacity-100"
                     : "text-[var(--muted)] opacity-0 group-hover:opacity-100"
@@ -91,7 +92,7 @@ const TableOfContents = ({ sections }: { sections: TocSection[] }) => {
             </button>
 
             {section.children && isActive && (
-              <div className="flex flex-col gap-0.5 mt-0.5 ml-auto pr-[18px] border-r border-[var(--border)]">
+              <div className="hidden xl:flex flex-col gap-0.5 mt-0.5 ml-auto pr-[18px] border-r border-[var(--border)]">
                 {section.children.map((child) => (
                   <button
                     key={child.id}
