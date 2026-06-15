@@ -56,6 +56,12 @@ body {
 }
 
 @media print {
+  /* Force exact color rendering for all elements */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   .no-print {
     display: none !important;
   }
@@ -68,11 +74,11 @@ body {
   body {
     background: #ffffff !important;
     color: #111111 !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
   }
 
-  :root {
+  /* Override dark mode — always print in light mode */
+  :root,
+  html.dark {
     --background: #ffffff;
     --foreground: #111111;
     --accent: #0070f3;
