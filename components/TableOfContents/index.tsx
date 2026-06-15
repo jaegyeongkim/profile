@@ -39,26 +39,26 @@ const TableOfContents = ({ sections }: { sections: TocSection[] }) => {
 
   useEffect(() => {
     const allIds = sections.map((s) => s.id);
-    const observers: IntersectionObserver[] = [];
 
-    allIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+    const handleScroll = () => {
+      const offset = window.innerHeight * 0.35;
+      let current = allIds[0];
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActive(id);
-        },
-        { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
+      for (const id of allIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= offset) current = id;
+      }
+      setActive(current);
+    };
 
-    return () => observers.forEach((o) => o.disconnect());
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [sections]);
 
   const scrollTo = (id: string) => {
+    setActive(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
