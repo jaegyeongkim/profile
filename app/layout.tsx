@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
+import Nav from "@/components/Nav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -66,6 +67,21 @@ export const metadata: Metadata = {
   },
 };
 
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  email: "tkwk1205@naver.com",
+  jobTitle: "Frontend Engineer",
+  knowsAbout: ["React", "TypeScript", "Next.js", "Turborepo", "Frontend Platform"],
+  name: "김재경",
+  sameAs: ["https://github.com/jaegyeongkim"],
+  url: SITE_URL,
+  worksFor: {
+    "@type": "Organization",
+    name: "Coconutsilo",
+  },
+};
+
 const RootLayout = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
@@ -74,7 +90,16 @@ const RootLayout = ({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
       lang="ko"
     >
-      <body className="min-h-full">{children}</body>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+          type="application/ld+json"
+        />
+      </head>
+      <body className="min-h-full">
+        <Nav />
+        {children}
+      </body>
     </html>
   );
 };
