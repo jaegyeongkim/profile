@@ -77,7 +77,7 @@ const TableOfContents = ({ sections }: { sections: TocSection[] }) => {
                 className={`text-xs font-mono tracking-wide transition-all duration-200 text-right ml-auto ${
                   isActive
                     ? "text-[var(--foreground)] opacity-100"
-                    : "text-[var(--muted)] opacity-0 xl:group-hover:opacity-100"
+                    : "text-[var(--muted)] opacity-0 md:group-hover:opacity-100"
                 }`}
               >
                 {section.label}
@@ -92,7 +92,7 @@ const TableOfContents = ({ sections }: { sections: TocSection[] }) => {
             </button>
 
             {section.children && isActive && (
-              <div className="hidden xl:flex flex-col gap-0.5 mt-0.5 ml-auto pr-[18px] border-r border-[var(--border)]">
+              <div className="hidden md:flex flex-col gap-0.5 mt-0.5 ml-auto pr-[18px] border-r border-[var(--border)]">
                 {section.children.map((child) => (
                   <button
                     key={child.id}
