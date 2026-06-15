@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -31,25 +33,57 @@ const TECH_INFRA = [
   "Vercel",
 ];
 
-const ACHIEVEMENTS = [
+interface Achievement {
+  description: ReactNode;
+  title: string;
+}
+
+const ACHIEVEMENTS: Achievement[] = [
   {
-    description:
-      "Typia 런타임 검증 + Pessimistic 타입 설계. API 명세 불일치 시 서비스 중단 없이 대응, 개발 서버 기동 시간 88% 단축 (53초 → 6초)",
+    description: (
+      <>
+        Typia 런타임 검증 + Pessimistic 타입 설계. API 명세 불일치 시{" "}
+        <strong className="text-[var(--foreground)]">서비스 중단 없이</strong> 대응,
+        개발 서버 기동 시간{" "}
+        <strong className="text-[var(--foreground)] underline underline-offset-2 decoration-[var(--accent)]">
+          88% 단축
+        </strong>{" "}
+        (53초 → 6초)
+      </>
+    ),
     title: "Type-safe API Layer",
   },
   {
-    description:
-      "pnpm workspace + Turborepo 기반 전환. 10개 앱이 동일 공용 패키지 사용, 공용 컴포넌트 206개+ · 테스트 165개 운영",
+    description: (
+      <>
+        pnpm workspace + Turborepo 기반 전환. 10개 앱이 동일 공용 패키지 사용,{" "}
+        <strong className="text-[var(--foreground)]">공용 컴포넌트 206개+</strong>{" "}
+        · 테스트 165개 운영
+      </>
+    ),
     title: "Monorepo Architecture",
   },
   {
-    description:
-      "GitHub Actions 기반 20개 파이프라인 구축. React(S3/CloudFront) · Next.js(Docker/ECR/EC2) 수 분 내 배포·롤백",
+    description: (
+      <>
+        GitHub Actions 기반{" "}
+        <strong className="text-[var(--foreground)]">20개 파이프라인</strong> 구축.
+        React(S3/CloudFront) · Next.js(Docker/ECR/EC2){" "}
+        <strong className="text-[var(--foreground)]">수 분 내 배포·롤백</strong>
+      </>
+    ),
     title: "CI/CD Automation",
   },
   {
-    description:
-      "lazy import · manualChunks · 배럴 파일 1,600개 제거. 초기 번들 92% 감소(4,990kB → 375kB), VSCode 자동완성 80% 개선",
+    description: (
+      <>
+        lazy import · manualChunks · 배럴 파일 1,600개 제거. 초기 번들{" "}
+        <strong className="text-[var(--foreground)] underline underline-offset-2 decoration-[var(--accent)]">
+          92% 감소
+        </strong>
+        (4,990kB → 375kB), VSCode 자동완성 80% 개선
+      </>
+    ),
     title: "Bundle & DX Optimization",
   },
 ];
@@ -99,12 +133,19 @@ const ResumePage = () => {
             </div>
           </div>
           <p className="text-base text-[var(--foreground)] font-medium max-w-lg leading-relaxed">
-            10개 어드민 서비스의 플랫폼과 DX를 설계하는{" "}
+            10개 어드민 서비스의{" "}
+            <span className="underline underline-offset-4 decoration-[var(--accent)]">
+              플랫폼과 DX
+            </span>
+            를 설계하는{" "}
             <strong>프론트엔드 엔지니어</strong>입니다.
           </p>
           <p className="text-sm text-[var(--muted)] max-w-lg leading-relaxed">
-            기능 구현에 머물지 않고, 팀이 더 빠르고 안정적으로 개발할 수 있는
-            환경을 직접 설계하고 정착시켜 왔습니다.
+            기능 구현에 머물지 않고,{" "}
+            <strong className="text-[var(--foreground)] font-medium">
+              팀이 더 빠르고 안정적으로 개발할 수 있는 환경
+            </strong>
+            을 직접 설계하고 정착시켜 왔습니다.
           </p>
         </div>
         <div className="hidden md:flex flex-col items-end gap-2 shrink-0 pt-1">

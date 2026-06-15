@@ -128,17 +128,19 @@ const Achievements = () => {
               className="border border-[var(--border)] overflow-hidden"
             >
               {/* Card header */}
-              <div className="flex items-center gap-6 px-8 py-6 border-b border-[var(--border)]">
-                <div className="shrink-0">
-                  <span className="text-5xl font-bold text-[var(--foreground)] tracking-tight leading-none">
-                    {metric}
-                  </span>
-                  <p className="text-xs text-[var(--muted)] mt-1">{metricLabel}</p>
-                </div>
-                <div className="w-px h-10 bg-[var(--border)]" />
-                <h3 className="text-lg font-semibold text-[var(--foreground)]">
+              <div className="flex items-center justify-between gap-6 px-8 py-6 border-b border-[var(--border)]">
+                <h3 className="text-xl font-semibold text-[var(--foreground)]">
                   {title}
                 </h3>
+                <div className="flex items-center gap-6 shrink-0">
+                  <div className="w-px h-10 bg-[var(--border)]" />
+                  <div className="text-right">
+                    <span className="text-4xl font-bold text-[var(--foreground)] tracking-tight leading-none">
+                      {metric}
+                    </span>
+                    <p className="text-xs text-[var(--muted)] mt-1">{metricLabel}</p>
+                  </div>
+                </div>
               </div>
 
               {/* Card body */}
@@ -152,21 +154,25 @@ const Achievements = () => {
                   </p>
                 </div>
 
-                <div className="p-8 space-y-3 md:border-r border-b md:border-b-0 border-[var(--border)]">
+                <div className="p-8 space-y-4 md:border-r border-b md:border-b-0 border-[var(--border)]">
                   <p className="text-xs font-mono text-[var(--muted)] uppercase tracking-wider">
                     Solution
                   </p>
-                  <ul className="space-y-2">
-                    {detail.map((item) => (
+                  <ol className="space-y-3">
+                    {detail.map((item, i) => (
                       <li
                         key={item}
-                        className="text-sm text-[var(--muted)] leading-relaxed flex gap-2"
+                        className="flex gap-3 items-start"
                       >
-                        <span className="text-[var(--border)] shrink-0 mt-0.5">—</span>
-                        {item}
+                        <span className="text-xs font-mono text-[var(--accent)] shrink-0 mt-0.5 w-5 pt-px">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="text-sm text-[var(--muted)] leading-relaxed">
+                          {item}
+                        </span>
                       </li>
                     ))}
-                  </ul>
+                  </ol>
                 </div>
 
                 <div className="p-8 space-y-4 bg-[var(--surface)]">

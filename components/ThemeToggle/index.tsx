@@ -24,7 +24,7 @@ const ThemeToggle = () => {
   return (
     <button
       aria-label="다크모드 전환"
-      className="w-7 h-7 flex items-center justify-center rounded-full text-[var(--muted)] hover:text-[var(--foreground)] transition-colors duration-150"
+      className="w-7 h-7 flex items-center justify-center rounded-full text-[var(--muted)] hover:text-[var(--foreground)] transition-colors duration-150 cursor-pointer"
       onClick={toggle}
     >
       {isDark ? (
