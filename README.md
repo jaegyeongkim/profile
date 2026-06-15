@@ -16,7 +16,7 @@
 
 ## 기술 스택
 
-- **Framework** Next.js 16 (App Router, `output: 'export'`)
+- **Framework** Next.js (App Router, `output: 'export'`)
 - **Styling** Tailwind CSS v4 + CSS 변수 기반 다크모드
 - **Font** Geist (Sans / Mono)
 - **Deploy** GitHub Actions → GitHub Pages
@@ -24,8 +24,14 @@
 ## 로컬 실행
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
+```
+
+## 빌드
+
+```bash
+pnpm build
 ```
 
 ## 배포

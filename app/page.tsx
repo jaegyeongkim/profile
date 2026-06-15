@@ -115,6 +115,26 @@ const CAREER = [
   },
 ];
 
+const SIDE_PROJECTS = [
+  {
+    description:
+      "주식·ETF·예금·부동산·코인 등 12개 자산 유형을 통합 관리하는 풀스택 웹앱. 수익률·IRR 자동 계산, 실시간 시세 연동, Playwright E2E·Vitest 단위 테스트.",
+    href: "https://asset-management-tools.vercel.app",
+    period: "2026.05",
+    role: "Solo (기획·설계·개발·배포 전 과정)",
+    tags: ["Next.js", "React 19", "TypeScript", "Supabase", "Playwright", "Vercel"],
+    title: "자산 관리 스튜디오",
+  },
+  {
+    description:
+      "완전 모유수유 기록과 관리를 돕는 Flutter 기반 모바일 앱. 개발 중.",
+    period: "2026.06",
+    role: "Solo",
+    tags: ["Flutter", "Dart", "Supabase"],
+    title: "모유미유",
+  },
+];
+
 const EDUCATION = [
   {
     description: "2020.01 ~ 2020.12",
@@ -345,6 +365,53 @@ const ResumePage = () => {
             </div>
           </div>
         ))}
+      </section>
+
+      <div className="h-px bg-[var(--border)]" />
+
+      {/* Side Projects */}
+      <section className="space-y-6">
+        <h2 className="text-xs font-mono text-[var(--muted)] uppercase tracking-widest">
+          Side Projects
+        </h2>
+        <div className="space-y-6">
+          {SIDE_PROJECTS.map(({ description, href, period, role, tags, title }) => (
+            <div key={title} className="space-y-3">
+              <div className="flex items-start justify-between gap-4">
+                <div className="space-y-0.5">
+                  <div className="flex items-center gap-2">
+                    <p className="text-base font-semibold text-[var(--foreground)]">
+                      {title}
+                    </p>
+                    {href && (
+                      <a
+                        className="text-xs font-mono text-[var(--accent)] hover:underline"
+                        href={href}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        Live ↗
+                      </a>
+                    )}
+                  </div>
+                  <p className="text-sm text-[var(--muted)]">{role}</p>
+                </div>
+                <p className="text-xs text-[var(--muted)] shrink-0 pt-0.5">{period}</p>
+              </div>
+              <p className="text-sm text-[var(--muted)] leading-relaxed">{description}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs font-mono text-[var(--muted)] border border-[var(--border)] px-2 py-0.5 rounded-full"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <div className="h-px bg-[var(--border)]" />

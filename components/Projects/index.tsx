@@ -12,6 +12,7 @@ interface Project {
   description: string;
   isPrivate?: boolean;
   links?: ProjectLink[];
+  newTech?: string[];
   period?: string;
   role: string;
   stats: ProjectStat[];
@@ -69,7 +70,7 @@ const MAIN_PROJECTS: Project[] = [
         label: "iOS",
       },
     ],
-    role: "프로젝트 초기 세팅, 주요 화면 개발, 지도 기반 차량 위치 기능 구현, 운영 및 유지보수",
+    role: "프로젝트 초기 세팅, 주요 화면 개발, API 연동, 지도 기반 차량 위치 기능 구현, 운영 및 유지보수",
     stats: [
       { label: "Pages", value: "27" },
       { label: "Feature", value: "실시간 GPS" },
@@ -107,7 +108,7 @@ const MAIN_PROJECTS: Project[] = [
         label: "iOS",
       },
     ],
-    role: "프로젝트 초기 세팅, 차량 등록·관리 화면 개발, 공용 컴포넌트 적용, 운영 및 유지보수",
+    role: "프로젝트 초기 세팅, 차량 등록·관리 화면 개발, API 연동, 공용 컴포넌트 적용, 운영 및 유지보수",
     stats: [
       { label: "Pages", value: "55" },
       { label: "Features", value: "차량 등록·판매" },
@@ -146,8 +147,14 @@ const LANDING_PAGES = [
 const SIDE_PROJECTS: Project[] = [
   {
     description:
-      "주식·ETF·예금·부동산·코인 등 12개 자산 유형을 통합 관리하는 개인 자산 추적 웹앱. 날짜별 원금·평가액 기록, 수익률·IRR 자동 계산, 실시간 시세 연동, 데모 모드, 다크모드, 한국어·영어 지원.",
+      "주식·ETF·예금·부동산·코인 등 12개 자산 유형을 통합 관리하는 개인 자산 추적 웹앱. 날짜별 원금·평가액 기록, 수익률·IRR 자동 계산, Yahoo Finance / Finnhub 실시간 시세 연동, Recharts 포트폴리오 시각화, 회원가입 없이 체험 가능한 데모 모드, 다크모드, 한국어·영어 지원.",
     links: [{ href: "https://asset-management-tools.vercel.app", label: "Live" }],
+    newTech: [
+      "Next.js App Router + React 19",
+      "Supabase 풀스택 설계",
+      "외부 시세 API 서버 측 호출 횟수 제한 (과다 요청 방지)",
+      "Vitest + Playwright E2E 테스트 환경 구축",
+    ],
     period: "2026.05",
     role: "Solo (기획·설계·개발·배포 전 과정)",
     stats: [
@@ -184,7 +191,7 @@ const SIDE_PROJECTS: Project[] = [
 ];
 
 const ProjectCard = ({ project }: { project: Project }) => {
-  const { description, isPrivate, links, period, role, stats, tags, title } =
+  const { description, isPrivate, links, newTech, period, role, stats, tags, title } =
     project;
 
   return (
@@ -242,6 +249,22 @@ const ProjectCard = ({ project }: { project: Project }) => {
           </div>
         ))}
       </div>
+
+      {newTech && newTech.length > 0 && (
+        <div className="space-y-2 pt-1 border-t border-[var(--border)]">
+          <p className="text-xs font-mono text-[var(--muted)] uppercase tracking-wider">
+            새로 적용한 기술
+          </p>
+          <ul className="space-y-1">
+            {newTech.map((item) => (
+              <li key={item} className="flex items-start gap-2 text-sm text-[var(--muted)]">
+                <span className="text-[var(--accent)] shrink-0 mt-px">—</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div className="flex flex-wrap gap-1.5">
         {tags.map((tag) => (

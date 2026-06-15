@@ -37,6 +37,13 @@ const About = () => {
                 </strong>
                 했습니다.
               </p>
+              <p>
+                업무 외 시간에는{" "}
+                <strong className="text-[var(--foreground)] font-medium">
+                  기획·설계·개발·배포까지 혼자 수행하는 풀스택 사이드 프로젝트
+                </strong>
+                를 진행하며 역량을 확장하고 있습니다.
+              </p>
             </div>
           </div>
         </div>
