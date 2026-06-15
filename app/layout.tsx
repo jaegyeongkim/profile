@@ -43,12 +43,21 @@ export const metadata: Metadata = {
     title: "김재경 | Frontend Engineer",
     description:
       "10개 어드민 서비스의 플랫폼과 DX를 설계하는 프론트엔드 엔지니어입니다.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "김재경 | Frontend Engineer - Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "김재경 | Frontend Engineer",
     description:
       "10개 어드민 서비스의 플랫폼과 DX를 설계하는 프론트엔드 엔지니어입니다.",
+    images: ["/og-image.png"],
   },
   robots: {
     follow: true,
