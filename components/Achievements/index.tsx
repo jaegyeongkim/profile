@@ -1,5 +1,7 @@
 interface Achievement {
   detail: string[];
+  metric: string;
+  metricLabel: string;
   problem: string;
   results: string[];
   title: string;
@@ -18,6 +20,8 @@ const ACHIEVEMENTS: Achievement[] = [
       "Pessimistic 타입 설계 — 모든 API 응답 필드를 undefined 가능으로 가정, 컴포넌트에서 undefined 처리를 타입 레벨에서 강제",
       "dev / dev-typia 스크립트 분리로 일반 개발은 속도 우선, QA·디버깅은 검증 모드로 전환",
     ],
+    metric: "88%",
+    metricLabel: "서버 기동 단축 (53초 → 6초)",
     problem:
       "API 명세 불일치 시 서비스가 중단됐고, 원인 필드 특정에 시간이 오래 걸렸습니다. 컴포넌트의 undefined 처리 누락으로 화면이 깨지는 사고도 반복됐습니다.",
     results: [
@@ -34,6 +38,8 @@ const ACHIEVEMENTS: Achievement[] = [
       "Next.js 앱 — Docker 이미지 빌드 → AWS ECR 푸시 → EC2 Pull → 컨테이너 실행 자동화",
       "10개 프로젝트 × 개발·운영 환경 = 20개 파이프라인을 3개 워크플로우 파일로 관리",
     ],
+    metric: "20개",
+    metricLabel: "파이프라인 (수 분 내 배포·롤백)",
     problem:
       "React 앱은 S3 수동 업로드 → CloudFront 초기화, Next.js 앱은 EC2 접속 → git pull → 빌드 → 재시작을 배포마다 반복했습니다. 롤백도 수동 복구로 오래 걸렸습니다.",
     results: [
@@ -50,6 +56,8 @@ const ACHIEVEMENTS: Achievement[] = [
       "공용 패키지: apis · components(206개+) · hooks · utils · services · types · styles · mocks",
       "Vitest + Testing Library로 공용 패키지 테스트 165개 구축 → 공용 코드 변경 시 오류 사전 감지",
     ],
+    metric: "206+",
+    metricLabel: "공용 컴포넌트 · 테스트 165개",
     problem:
       "서비스가 늘어날수록 공용 컴포넌트와 유틸이 레포마다 중복 복사됐습니다. 한 곳에서 버그를 고쳐도 다른 레포에 반영이 안 되고 버전 불일치 문제가 반복됐습니다.",
     results: [
@@ -65,6 +73,8 @@ const ACHIEVEMENTS: Achievement[] = [
       "Vite manualChunks 설계 — 외부 라이브러리·공용 패키지·앱 코드를 종류별 분리, 미변경 라이브러리는 브라우저 캐시 재사용",
       "배럴 파일 1,600개 제거 + assets·i18n 앱별 이관 — 미사용 파일 번들 포함 차단",
     ],
+    metric: "92%",
+    metricLabel: "초기 번들 감소 (4,990kB → 375kB)",
     problem:
       "초기 React 앱 빌드 결과물이 단일 index.js에 집중되어 초기 로딩이 느렸습니다.",
     results: [
@@ -108,18 +118,29 @@ const Achievements = () => {
           </p>
         </div>
 
-        <div className="space-y-px bg-[var(--border)]">
-          {ACHIEVEMENTS.map(({ detail, problem, results, title }) => (
+        <div className="space-y-6">
+          {ACHIEVEMENTS.map(({ detail, metric, metricLabel, problem, results, title }) => (
             <div
               key={title}
-              className="bg-[var(--background)] p-8 md:p-10 space-y-8"
+              className="border border-[var(--border)] overflow-hidden"
             >
-              <h3 className="text-lg font-semibold text-[var(--foreground)]">
-                {title}
-              </h3>
+              {/* Card header */}
+              <div className="flex items-center gap-6 px-8 py-6 border-b border-[var(--border)]">
+                <div className="shrink-0">
+                  <span className="text-5xl font-bold text-[var(--foreground)] tracking-tight leading-none">
+                    {metric}
+                  </span>
+                  <p className="text-xs text-[var(--muted)] mt-1">{metricLabel}</p>
+                </div>
+                <div className="w-px h-10 bg-[var(--border)]" />
+                <h3 className="text-lg font-semibold text-[var(--foreground)]">
+                  {title}
+                </h3>
+              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="space-y-2">
+              {/* Card body */}
+              <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr]">
+                <div className="p-8 space-y-3 md:border-r border-b md:border-b-0 border-[var(--border)]">
                   <p className="text-xs font-mono text-[var(--muted)] uppercase tracking-wider">
                     Problem
                   </p>
@@ -128,39 +149,36 @@ const Achievements = () => {
                   </p>
                 </div>
 
-                <div className="space-y-2">
+                <div className="p-8 space-y-3 md:border-r border-b md:border-b-0 border-[var(--border)]">
                   <p className="text-xs font-mono text-[var(--muted)] uppercase tracking-wider">
                     Solution
                   </p>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-2">
                     {detail.map((item) => (
                       <li
                         key={item}
                         className="text-sm text-[var(--muted)] leading-relaxed flex gap-2"
                       >
-                        <span className="text-[var(--border)] shrink-0 mt-1">
-                          —
-                        </span>
+                        <span className="text-[var(--border)] shrink-0 mt-0.5">—</span>
                         {item}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="space-y-2">
+                <div className="p-8 space-y-4 bg-[#fafafa]">
                   <p className="text-xs font-mono text-[var(--accent)] uppercase tracking-wider">
                     Result
                   </p>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-3">
                     {results.map((result) => (
-                      <li
-                        key={result}
-                        className="text-sm font-medium text-[var(--foreground)] leading-relaxed flex gap-2"
-                      >
-                        <span className="text-[var(--accent)] shrink-0 mt-1">
+                      <li key={result} className="flex gap-3 items-start">
+                        <span className="text-[var(--accent)] font-bold text-base shrink-0 mt-0.5">
                           ↑
                         </span>
-                        {result}
+                        <span className="text-sm font-medium text-[var(--foreground)] leading-relaxed">
+                          {result}
+                        </span>
                       </li>
                     ))}
                   </ul>
