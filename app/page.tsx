@@ -1,4 +1,6 @@
-import type { Metadata, ReactNode } from "react";
+import type { ReactNode } from "react";
+
+import type { Metadata } from "next";
 
 import Image from "next/image";
 import Link from "next/link";
