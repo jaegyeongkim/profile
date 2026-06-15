@@ -8,16 +8,24 @@ const About = () => {
           </p>
           <div className="space-y-6">
             <p className="text-2xl md:text-3xl font-medium text-[var(--foreground)] leading-snug">
-              10개 어드민 서비스의 플랫폼과 DX를{" "}
+              10개 어드민 서비스의 플랫폼과 DX를
               <br className="hidden md:block" />
               설계하는 프론트엔드 엔지니어입니다.
             </p>
-            <p className="text-base text-[var(--muted)] leading-relaxed max-w-2xl">
-              기능 구현보다 팀 전체의 개발 생산성을 높이는 구조를 설계합니다.
-              모노레포 전환, CI/CD 자동화, API 런타임 검증 체계 구축 등
-              플랫폼·아키텍처 개선을 주도하며 2021년부터 FE 팀을 리드하고
-              있습니다.
-            </p>
+            <div className="space-y-4 text-base text-[var(--muted)] leading-relaxed max-w-2xl">
+              <p>
+                2020년 12월부터 코코넛사일로에서 근무하며, 라오스 현지 O2O
+                플랫폼(이커머스·차량·물류·택시)의 어드민 웹 서비스를 처음부터
+                함께 만들고 운영했습니다.
+              </p>
+              <p>
+                기능 구현에 머물지 않고, 팀이 더 빠르고 안정적으로 개발할 수
+                있는 환경을 직접 설계하고 정착시켜 왔습니다. 개별 레포 →
+                모노레포 전환 / 수동 배포 → CI/CD 자동화 / API 응답 불안정 →
+                런타임 검증 체계 구축처럼, 팀 전체가 체감하는 구조적 문제를
+                찾아 개선하는 일을 주도했습니다.
+              </p>
+            </div>
           </div>
         </div>
       </div>
