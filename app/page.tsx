@@ -62,7 +62,9 @@ const ACHIEVEMENTS: Achievement[] = [
       <>
         Typia 런타임 검증 + Pessimistic 타입 설계. API 명세 불일치 시{" "}
         <strong className="text-[var(--foreground)]">서비스 중단 없이</strong> 대응,
-        개발 서버 기동 시간{" "}
+        불일치 필드{" "}
+        <strong className="text-[var(--foreground)]">즉시 특정</strong>으로 디버깅 시간 단축.
+        개발 서버 기동{" "}
         <strong className="text-[var(--foreground)] underline underline-offset-2 decoration-[var(--accent)]">
           88% 단축
         </strong>{" "}
@@ -98,8 +100,13 @@ const ACHIEVEMENTS: Achievement[] = [
         lazy import · manualChunks · 배럴 파일 1,600개 제거. 초기 번들{" "}
         <strong className="text-[var(--foreground)] underline underline-offset-2 decoration-[var(--accent)]">
           92% 감소
-        </strong>
-        (4,990kB → 375kB), VSCode 자동완성 80% 개선
+        </strong>{" "}
+        (4,990kB → 375kB).{" "}
+        VSCode 자동완성{" "}
+        <strong className="text-[var(--foreground)] underline underline-offset-2 decoration-[var(--accent)]">
+          10초 → 2초
+        </strong>{" "}
+        (배럴 파일 제거·타입 선언 단순화)
       </>
     ),
     title: "Bundle & DX Optimization",
