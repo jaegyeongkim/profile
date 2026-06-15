@@ -1,5 +1,7 @@
 import { Mail } from "lucide-react";
 
+import PrintButton from "@/components/PrintButton";
+
 const GithubIcon = ({ size = 16 }: { size?: number }) => (
   <svg
     fill="currentColor"
@@ -47,6 +49,9 @@ const Footer = () => {
               </a>
             </div>
 
+            <div className="flex lg:justify-end">
+              <PrintButton label="PDF로 저장" />
+            </div>
             <p className="text-xs text-[var(--muted)]">
               © {new Date().getFullYear()} 김재경. All rights reserved.
             </p>

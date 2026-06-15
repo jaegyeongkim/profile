@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Footer from "@/components/Footer";
+import PrintButton from "@/components/PrintButton";
 
 const TECH_CORE = [
   "React",
@@ -179,6 +180,7 @@ const ResumePage = () => {
           >
             포트폴리오 전체 보기 →
           </Link>
+          <PrintButton />
         </div>
       </header>
 
