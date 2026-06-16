@@ -84,6 +84,24 @@ const ACHIEVEMENTS: Achievement[] = [
     ],
     title: "Bundle & DX Optimization",
   },
+  {
+    detail: [
+      "useModal 구독 범위를 modals 배열 전체 → 필요한 함수 참조만으로 좁혀 로그아웃 시 401 + 흰 화면 버그 수정",
+      "RoutePathProvider, AuthProvider(class 인스턴스 + ContextAPI), useGoogleMap 등을 Zustand selector 기반으로 전환",
+      "useLocation 의존성을 window.location.pathname과 router 싱글톤 패턴으로 대체, Navbar에 React.memo 적용해 추가 리렌더링 제거",
+      "개선된 공통 코드(Auth.tsx, authStore.ts 등)를 packages/로 이동해 10개 앱 전체 일괄 적용",
+    ],
+    metric: "10개 앱",
+    metricLabel: "전체 리렌더링 구조 개선",
+    problem:
+      "전역 상태를 잘못 공유하는 구조가 불필요한 리렌더링을 유발했고, 일부는 실제 버그로 이어졌습니다. useModal이 modals 배열 전체를 구독하는 구조로 인해 로그아웃 시 401 오류 + 흰 화면 버그가 발생했고, ContextAPI 기반 상태가 NavigationBar 클릭마다 Header 전체를 리렌더링시키고 있었습니다.",
+    results: [
+      "로그아웃 시 401 오류 + 흰 화면 버그 수정",
+      "NavigationBar 클릭 시 Header 전체 리렌더링 제거 (React DevTools Profiler 확인)",
+      "10개 앱 전체 불필요 리렌더링 구조 개선",
+    ],
+    title: "Global State Optimization",
+  },
 ];
 
 const OTHER_IMPROVEMENTS: OtherImprovement[] = [
