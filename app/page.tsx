@@ -114,8 +114,8 @@ const ACHIEVEMENTS: Achievement[] = [
   {
     description: (
       <>
-        전역 상태 잘못 공유 구조를 직접 발굴·이슈화해 단계적 해결.{" "}
-        <strong className="text-[var(--foreground)]">useModal</strong> 구독 범위 개선으로{" "}
+        전역 상태를 잘못 공유하는 구조를 직접 발굴·이슈화해 단계적으로 해결.{" "}
+        <strong className="text-[var(--foreground)]">useModal</strong> 과도한 상태 구독으로 인한{" "}
         <strong className="text-[var(--foreground)]">
           로그아웃 시 401 + 흰 화면 버그 수정
         </strong>
@@ -123,7 +123,7 @@ const ACHIEVEMENTS: Achievement[] = [
         <strong className="text-[var(--foreground)] underline underline-offset-2 decoration-[var(--accent)]">
           Header 전체 리렌더링 제거
         </strong>{" "}
-        (React DevTools Profiler 확인). 10개 앱 전체 일괄 적용.
+        (React DevTools Profiler 확인). 공통 코드를 packages/로 이동해 10개 앱 전체 일괄 적용.
       </>
     ),
     title: "Global State Optimization",
