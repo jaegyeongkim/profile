@@ -111,6 +111,23 @@ const ACHIEVEMENTS: Achievement[] = [
     ),
     title: "Bundle & DX Optimization",
   },
+  {
+    description: (
+      <>
+        전역 상태 잘못 공유 구조를 직접 발굴·이슈화해 단계적 해결.{" "}
+        <strong className="text-[var(--foreground)]">useModal</strong> 구독 범위 개선으로{" "}
+        <strong className="text-[var(--foreground)]">
+          로그아웃 시 401 + 흰 화면 버그 수정
+        </strong>
+        . ContextAPI 기반 RoutePathProvider·AuthProvider 등을 Zustand selector로 전환,{" "}
+        <strong className="text-[var(--foreground)] underline underline-offset-2 decoration-[var(--accent)]">
+          Header 전체 리렌더링 제거
+        </strong>{" "}
+        (React DevTools Profiler 확인). 10개 앱 전체 일괄 적용.
+      </>
+    ),
+    title: "Global State Optimization",
+  },
 ];
 
 const CAREER = [
