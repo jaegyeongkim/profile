@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 
 import Nav from "@/components/Nav";
 import "./globals.css";
@@ -117,6 +118,10 @@ const RootLayout = ({
         <Nav />
         {children}
       </body>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-R5G6DM9KM5" strategy="afterInteractive" />
+      <Script id="ga-init" strategy="afterInteractive">
+        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-R5G6DM9KM5');`}
+      </Script>
     </html>
   );
 };
